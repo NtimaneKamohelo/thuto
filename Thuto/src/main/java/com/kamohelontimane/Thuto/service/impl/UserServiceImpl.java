@@ -4,6 +4,7 @@ import com.kamohelontimane.Thuto.entity.User;
 import com.kamohelontimane.Thuto.exception.ResourceNotFoundException;
 import com.kamohelontimane.Thuto.repository.UserRepository;
 import com.kamohelontimane.Thuto.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,13 +14,19 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository repo) {
+    public UserServiceImpl(UserRepository repo, PasswordEncoder encoder) {
+
         this.userRepository = repo;
+        this.passwordEncoder = encoder;
     }
 
     @Override
     public User createUser(User user){
+        // Hash password before saving
+        String rawPassword = user.getPasswordHash();
+        user.setPasswordHash(passwordEncoder.encode(rawPassword));
         return userRepository.save(user);
     }
 
@@ -44,6 +51,12 @@ public class UserServiceImpl implements UserService {
             existing.setName(updated.getName());
             existing.setBio(updated.getBio());
             existing.setRole(updated.getRole());
+
+            //if password provided, rehash it
+            if (updated.getPasswordHash() != null && !updated.getPasswordHash().isBlank()){
+                existing.setPasswordHash(passwordEncoder.encode(updated.getPasswordHash()));
+            }
+
             return userRepository.save(existing);
         }).orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
     }
