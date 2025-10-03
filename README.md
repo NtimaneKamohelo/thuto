@@ -1,4 +1,4 @@
-# THUTO - Projet Documentation
+# THUTO
 
 ## Project Documentation
 Thuto (meaning Knowledge) is a collaborative learning platform that connects Tutors, Learners, and Students. 
