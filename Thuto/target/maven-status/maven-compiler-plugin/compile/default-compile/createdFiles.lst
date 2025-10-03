@@ -3,5 +3,6 @@ com\kamohelontimane\Thuto\repository\UserRepository.class
 com\kamohelontimane\Thuto\entity\User.class
 com\kamohelontimane\Thuto\controller\UserController.class
 com\kamohelontimane\Thuto\ThutoApplication.class
+com\kamohelontimane\Thuto\config\SecurityConfig.class
 com\kamohelontimane\Thuto\service\impl\UserServiceImpl.class
 com\kamohelontimane\Thuto\service\UserService.class
