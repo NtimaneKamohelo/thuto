@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.util.Date;
 
 @Component
 public class JwtUtil {
 
     //Inject values from application.properties
     @Value("${jwt.secret}")
-    private Key key;
+    private String base64Secret;
 
     @Value("${jwt.expiration-ms=3600000}")
     private long expirationMS;
@@ -25,7 +26,36 @@ public class JwtUtil {
     }
 
     public String generateTokens(String email) {
+        Date now = new Date();
+        Date expiary = new Date(now.getTime() + expirationMS);
 
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(now)
+                .setExpiration(expiary)
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String extractEmail(String token){
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public boolean validateToken(String token){
+        try {
+            Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
     }
 
 }
