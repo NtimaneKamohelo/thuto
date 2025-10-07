@@ -1,8 +1,12 @@
-com\kamohelontimane\Thuto\exception\ResourceNotFoundException.class
 com\kamohelontimane\Thuto\repository\UserRepository.class
+com\kamohelontimane\Thuto\config\SecurityConfig.class
+com\kamohelontimane\Thuto\dto\LoginRequest.class
+com\kamohelontimane\Thuto\service\impl\UserServiceImpl.class
+com\kamohelontimane\Thuto\security\JwtUtil.class
+com\kamohelontimane\Thuto\service\UserService.class
+com\kamohelontimane\Thuto\exception\ResourceNotFoundException.class
 com\kamohelontimane\Thuto\entity\User.class
+com\kamohelontimane\Thuto\controller\AuthController.class
 com\kamohelontimane\Thuto\controller\UserController.class
 com\kamohelontimane\Thuto\ThutoApplication.class
-com\kamohelontimane\Thuto\config\SecurityConfig.class
-com\kamohelontimane\Thuto\service\impl\UserServiceImpl.class
-com\kamohelontimane\Thuto\service\UserService.class
+com\kamohelontimane\Thuto\dto\AuthResponse.class

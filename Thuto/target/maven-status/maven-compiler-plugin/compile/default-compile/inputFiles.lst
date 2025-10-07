@@ -1,8 +1,12 @@
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\config\SecurityConfig.java
+D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\controller\AuthController.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\controller\UserController.java
+D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\dto\AuthResponse.java
+D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\dto\LoginRequest.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\entity\User.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\exception\ResourceNotFoundException.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\repository\UserRepository.java
+D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\security\JwtUtil.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\service\impl\UserServiceImpl.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\service\UserService.java
 D:\Personal Projects\Knowledge\workingSpaceThuto\thuto\Thuto\src\main\java\com\kamohelontimane\Thuto\ThutoApplication.java
