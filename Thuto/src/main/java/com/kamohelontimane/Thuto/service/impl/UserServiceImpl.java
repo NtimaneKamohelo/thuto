@@ -4,6 +4,8 @@ import com.kamohelontimane.Thuto.entity.User;
 import com.kamohelontimane.Thuto.exception.ResourceNotFoundException;
 import com.kamohelontimane.Thuto.repository.UserRepository;
 import com.kamohelontimane.Thuto.service.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -69,5 +71,16 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    @Override
+    public void registerUser(User user){
+        user.setPasswordHash(passwordEncoder.encode(user.getPasswordHash()));
+        userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+        return (UserDetails) userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+    }
 
 }
