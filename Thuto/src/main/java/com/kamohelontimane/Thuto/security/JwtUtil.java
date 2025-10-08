@@ -13,10 +13,10 @@ import java.util.Date;
 public class JwtUtil {
 
     //Inject values from application.properties
-    @Value("${jwt.secret}")
+    @Value("${security.jwt.secret-key}")
     private String base64Secret;
 
-    @Value("${jwt.expiration-ms=3600000}")
+    @Value("${security.jwt.expiration-time}")
     private long expirationMS;
 
     //Build the signing key once the base64 secret
@@ -27,12 +27,12 @@ public class JwtUtil {
 
     public String generateTokens(String email) {
         Date now = new Date();
-        Date expiary = new Date(now.getTime() + expirationMS);
+        Date expiry = new Date(now.getTime() + expirationMS);
 
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(now)
-                .setExpiration(expiary)
+                .setExpiration(expiry)
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

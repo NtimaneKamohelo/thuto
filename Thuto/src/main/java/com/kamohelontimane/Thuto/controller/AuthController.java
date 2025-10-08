@@ -1,6 +1,7 @@
 package com.kamohelontimane.Thuto.controller;
 
 
+import com.kamohelontimane.Thuto.dto.LoginRequest;
 import com.kamohelontimane.Thuto.entity.User;
 import com.kamohelontimane.Thuto.security.JwtUtil;
 import com.kamohelontimane.Thuto.service.UserService;
@@ -11,10 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -24,7 +22,7 @@ public class AuthController {
     private final JwtUtil jwtUtil;
     private final UserService userService;
 
-    @Autowired
+
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
@@ -44,15 +42,15 @@ public class AuthController {
 
     // User Login
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User loginRequest){
+    public ResponseEntity<?> login(@RequestBody LoginRequest request){
         try {
             //Authenticate Credentials
             Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPasswordHash())
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
 
             // If Successful, generate token
-            String token = jwtUtil.generateTokens(loginRequest.getEmail());
+            String token = jwtUtil.generateTokens(request.getEmail());
             return ResponseEntity.ok(token);
         } catch (AuthenticationException e) {
             return ResponseEntity.status(401).body("Invalid Email or password");
