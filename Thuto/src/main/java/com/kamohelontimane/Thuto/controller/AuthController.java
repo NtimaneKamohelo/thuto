@@ -1,17 +1,15 @@
 package com.kamohelontimane.Thuto.controller;
 
 
-import com.kamohelontimane.Thuto.dto.LoginRequest;
+import com.kamohelontimane.Thuto.dto.LoginUserDto;
 import com.kamohelontimane.Thuto.entity.User;
 import com.kamohelontimane.Thuto.security.JwtUtil;
 import com.kamohelontimane.Thuto.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -42,7 +40,7 @@ public class AuthController {
 
     // User Login
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request){
+    public ResponseEntity<?> login(@RequestBody LoginUserDto request){
         try {
             //Authenticate Credentials
             Authentication authentication = authenticationManager.authenticate(

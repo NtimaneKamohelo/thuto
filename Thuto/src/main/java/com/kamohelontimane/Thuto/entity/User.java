@@ -3,7 +3,6 @@ package com.kamohelontimane.Thuto.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,8 +29,8 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private String role; //Tutor, Learner, Student, Admin
+    /*@Column
+    private String role;*/ //Tutor, Learner, Student, Admin
 
     private boolean enabled;
 
@@ -42,14 +41,15 @@ public class User implements UserDetails {
     private LocalDateTime verificationCodeExpiresAt;
 
     //constructor
-    public User(){}
 
-    public User(String username, String email, String password, String role) {
+
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password= password;
-        this.role = role;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
