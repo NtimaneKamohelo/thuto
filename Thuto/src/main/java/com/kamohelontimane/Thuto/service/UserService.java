@@ -2,14 +2,12 @@ package com.kamohelontimane.Thuto.service;
 
 import com.kamohelontimane.Thuto.entity.User;
 import com.kamohelontimane.Thuto.repository.UserRepository;
-import com.kamohelontimane.Thuto.service.impl.EmailService;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+@Service
 public class UserService {
 
     private final UserRepository userRepository;

@@ -6,15 +6,9 @@ import com.kamohelontimane.Thuto.dto.RegisterUserDto;
 import com.kamohelontimane.Thuto.dto.VerifyUserDto;
 import com.kamohelontimane.Thuto.entity.User;
 import com.kamohelontimane.Thuto.responses.LoginResponse;
-import com.kamohelontimane.Thuto.security.JwtUtil;
-import com.kamohelontimane.Thuto.service.UserService;
-import com.kamohelontimane.Thuto.service.impl.AuthenticationService;
-import com.kamohelontimane.Thuto.service.impl.JwtService;
+import com.kamohelontimane.Thuto.service.AuthenticationService;
+import com.kamohelontimane.Thuto.service.JwtService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
