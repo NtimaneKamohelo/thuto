@@ -1,2 +1,6 @@
 # Ignore Springboot application configs
 /src/main/resources/application.properties
+
+#Ignore
+target/
+src/test
