@@ -10,6 +10,7 @@ import java.util.Properties;
 
 @Configuration
 public class EmailConfiguration {
+
     @Value("${spring.mail.username}")
     private String emailUsername;
 
@@ -26,7 +27,7 @@ public class EmailConfiguration {
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", true);
+        props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.debug", "true");
 
