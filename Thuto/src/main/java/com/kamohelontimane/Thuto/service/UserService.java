@@ -11,9 +11,11 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final EmailService emailService;
 
     public UserService(UserRepository userRepository, EmailService emailService){
         this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     public List<User> allUsers(){
