@@ -35,10 +35,10 @@ public class SecurityConfiguration {
        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
    }
 
-   @Bean
+   /**@Bean
     public  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
        http
-               .csrf(AbstractHttpConfigurer::disable)
+               .csrf(csrf -> csrf.disable())
                .authorizeHttpRequests(authorize -> authorize
                        .requestMatchers("/auth/**").permitAll()
                        .anyRequest().authenticated()
@@ -47,6 +47,16 @@ public class SecurityConfiguration {
                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                .authenticationProvider(authenticationProvider)
                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+       return http.build();
+   }*/
+
+   @Bean
+   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+       http
+               .csrf(csrf -> csrf.disable()) // disable CSRF for tools like Insomnia
+               .authorizeHttpRequests(auth -> auth
+                       .anyRequest().permitAll()
+               );
        return http.build();
    }
 
