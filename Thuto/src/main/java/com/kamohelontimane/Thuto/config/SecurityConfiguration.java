@@ -35,12 +35,12 @@ public class SecurityConfiguration {
        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
    }
 
-   /**@Bean
+   @Bean
     public  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
        http
                .csrf(csrf -> csrf.disable())
                .authorizeHttpRequests(authorize -> authorize
-                       .requestMatchers("/auth/**").permitAll()
+                       .requestMatchers("/api/**").permitAll()
                        .anyRequest().authenticated()
                )
                .sessionManagement(session -> session
@@ -48,9 +48,9 @@ public class SecurityConfiguration {
                .authenticationProvider(authenticationProvider)
                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
        return http.build();
-   }*/
+   }
 
-   @Bean
+   /**@Bean
    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
        http
                .csrf(csrf -> csrf.disable()) // disable CSRF for tools like Insomnia
@@ -58,7 +58,7 @@ public class SecurityConfiguration {
                        .anyRequest().permitAll()
                );
        return http.build();
-   }
+   }*/
 
    @Bean
     public CorsConfigurationSource corsConfigurationSource(){
