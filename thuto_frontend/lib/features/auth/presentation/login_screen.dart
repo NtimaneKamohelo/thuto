@@ -13,6 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //Controllers
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,14 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: AppStrings.EnterUsername, 
               textEditingController: emailController
             ).emailUsernameTextField(),
+
+            //Password- Password
+            TextfieldUtils(
+              prefixIcon: Icon(Icons.lock), 
+              hintText: AppStrings.EnterPassword, 
+              textEditingController: passwordController,
+              isPass: true,
+            ).passwordTextfield(),
           ],
         ),
       ),

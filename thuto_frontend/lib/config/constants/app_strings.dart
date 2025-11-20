@@ -3,4 +3,5 @@ class AppStrings {
 
   //Enter username
   static const String EnterUsername = "Enter your email";
+  static const String EnterPassword = "Enter your password";
 }

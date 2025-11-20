@@ -24,8 +24,8 @@ class TextfieldUtils {
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 60,
+            color: Colors.white10,
+            blurRadius: 4,
           )
         ]
       ),
@@ -37,7 +37,7 @@ class TextfieldUtils {
           fillColor: AppColors.textPrimary,
           contentPadding: const EdgeInsets.all(10),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5)
+            borderRadius: BorderRadius.circular(10)
           ),
           prefixIcon: prefixIcon,
           hintText: hintText,
@@ -48,6 +48,44 @@ class TextfieldUtils {
         ),
       ),
     );
+
   }
+
+  //Password-Textfield
+    Container passwordTextfield() {
+      
+      return Container(
+        
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white10,
+              blurRadius: 4,
+            )
+          ]
+        ),
+        margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
+        child: TextField(
+          
+          obscureText: isPass,
+          controller: textEditingController,
+          decoration: InputDecoration(
+            fillColor: AppColors.textPrimary,
+            contentPadding: const EdgeInsets.all(10),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              
+            ),
+            prefixIcon: prefixIcon,
+            suffixIcon: const Icon(Icons.remove_red_eye),
+            hintText: hintText,
+            hintStyle: const TextStyle(
+              color: AppColors.textPrimary,
+              fontSize: 14,
+            )
+          ),
+        ),
+      );
+    }
 
 }
