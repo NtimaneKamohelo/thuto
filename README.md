@@ -11,9 +11,9 @@ Thuto (meaning Knowledge) is a collaborative learning platform that connects Tut
 - Connect with peers.
 - Provide or receive tutoring support.
 
-## 2. Tech Stack
+## 2. Tech Stack(Mobile First)
 - *Backend*: Java, Spring Boot, Spring Security, JPA/Hibernate, MySQL/PostgreSQL.
-- *Frontend*: ReactJS, Material UI/TailwindCSS.
+- *Frontend*: Flutter Framework, Dart
 - *Authentication*: JWT.
 - *Testing*: JUnit, Postman
 
