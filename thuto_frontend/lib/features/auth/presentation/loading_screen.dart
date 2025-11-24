@@ -27,20 +27,24 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.background,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.library_books_outlined,
-              size: 80,
-              color: Colors.white,
+            
+            Container(
+              
+              child: Icon(
+                Icons.menu_book_sharp,
+                size: 120,
+                color: Colors.white,
+              ),
             ),
-
+      
             const SizedBox(height: 30),
-
+      
             //AppName
             Text(
               AppStrings.appName,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thuto_frontend/config/constants/app_colors.dart';
+import 'package:thuto_frontend/features/auth/presentation/home_screen.dart';
 import 'package:thuto_frontend/features/auth/presentation/loading_screen.dart';
 
 void main() {
@@ -20,6 +21,12 @@ class MyApp extends StatelessWidget {
       ),
       
       home: LoadingScreen(),
+
+
+      //Routes
+      routes: {
+        HomeScreen.id: (context) => HomeScreen(),
+      },
     );
   }
 }
