@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thuto_frontend/config/constants/app_colors.dart';
+import 'package:thuto_frontend/features/auth/presentation/forgotPassword_screen.dart';
 import 'package:thuto_frontend/features/auth/presentation/home_screen.dart';
 import 'package:thuto_frontend/features/auth/presentation/loading_screen.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       //Routes
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
+        ForgotPasswordScreen.id: (context) => ForgotPasswordScreen(),
       },
     );
   }

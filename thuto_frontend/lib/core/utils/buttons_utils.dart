@@ -14,7 +14,7 @@ class ButtonsUtils {
   //Login Button
   Container LoginBtn(){
     return Container(
-      margin: EdgeInsets.all(40),
+      margin: EdgeInsets.only(top: 20, left: 40, right: 40),
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
@@ -32,6 +32,25 @@ class ButtonsUtils {
       ),
     );
   }
+
+  //Forgot password Button
+  Container forgotPwdButton() {
+    return Container(
+      margin: EdgeInsets.only(top: 5),
+      child: TextButton(
+        onPressed: onPressed, 
+        child: Text(
+          btnText,
+          style: TextStyle(
+            color: AppColors.textPrimary,
+          ),
+        ) ),
+    );
+  }
+
+  //Social Media
+
+  
 
 
 }

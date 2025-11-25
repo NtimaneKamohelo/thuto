@@ -54,6 +54,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 isPass: true,
               ).passwordTextfield(),
 
+              //Forgot Password
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 14),
+                    child: ButtonsUtils(
+                      onPressed: () {
+                       Navigator.pushNamed(context, '/ForgotPasswordScreen');
+                      }, 
+                      btnText: "Forgot Password?",
+                    ).forgotPwdButton(),
+                  ),
+                ],
+              ),
+
               //LoginButton
               ButtonsUtils(
                 onPressed: () {
@@ -61,6 +77,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 }, 
                 btnText: "Login",
               ).LoginBtn()
+
+              //Line Breaker
             ],
           ),
         ),
