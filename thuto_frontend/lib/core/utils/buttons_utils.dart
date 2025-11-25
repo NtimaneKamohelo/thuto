@@ -14,7 +14,7 @@ class ButtonsUtils {
   //Login Button
   Container LoginBtn(){
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 40, right: 40),
+      margin: EdgeInsets.only(top: 20, left: 40, right: 40, bottom: 20),
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
@@ -48,7 +48,14 @@ class ButtonsUtils {
     );
   }
 
-  //Social Media
+  //Social Media Login
+  Container mediaButton(Widget icon) {
+    return Container(
+      child: IconButton(
+        onPressed: onPressed, 
+        icon: icon)
+    );
+  }
 
   
 

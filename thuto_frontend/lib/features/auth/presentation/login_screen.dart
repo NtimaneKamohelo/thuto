@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thuto_frontend/config/constants/app_strings.dart';
 import 'package:thuto_frontend/core/utils/buttons_utils.dart';
 import 'package:thuto_frontend/core/utils/textfield_utils.dart';
@@ -76,9 +77,60 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushNamed(context, '/HomeScreen');
                 }, 
                 btnText: "Login",
-              ).LoginBtn()
+              ).LoginBtn(),
 
-              //Line Breaker
+              //Split the login and social media login
+              Row(
+                children: <Widget>[
+                  //left
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 10.0, right: 5.0),
+                      child: const Divider(
+                        indent: 40,
+                        endIndent: 40,
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
+                    ),
+                  ),
+
+                  const Text(
+                    "Login with",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54
+                    ),
+                  ),
+
+                  //Right
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 5.0, right: 10.0),
+                      child: const Divider(
+                        indent: 40,
+                        endIndent: 40,
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
+                    ),
+                  ),
+
+                  //Social media button(Google)
+                  ButtonsUtils(
+                    onPressed: () {}, 
+                    btnText: ""
+                  ).mediaButton(
+                    const FaIcon(
+                      FontAwesomeIcons.google,
+                      color: Colors.red,
+                    )
+                  )
+
+                ],
+              )
+              
             ],
           ),
         ),
