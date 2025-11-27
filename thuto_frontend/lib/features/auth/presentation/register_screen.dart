@@ -3,36 +3,38 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:thuto_frontend/config/constants/app_strings.dart';
 import 'package:thuto_frontend/core/utils/buttons_utils.dart';
 import 'package:thuto_frontend/core/utils/textfield_utils.dart';
-import 'package:thuto_frontend/features/auth/presentation/home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
-  static const String id = '/LoginScreen';
+  static const String id = '/RegisterScreen';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
 
   //Password visibility
   bool showPassword = false;
+  bool showConfirmPassword = false;
 
-  //Controllers
+  //Controller
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-        
+              
               //Logo Section
               Container( 
                 //height: MediaQuery.of(context).size.height,
@@ -76,29 +78,37 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              //Forgot Password
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 14),
-                    child: ButtonsUtils(
-                      onPressed: () {
-                       Navigator.pushNamed(context, '/ForgotPasswordScreen');
-                      }, 
-                      btnText: "Forgot Password?",
-                      
-                    ).forgotPwdButton(),
+              //Confirm Password
+              TextfieldUtils(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.black.withValues(alpha: 0.5),
+                ), 
+                hintText: AppStrings.ConfirmPassword, 
+                textEditingController: confirmPasswordController,
+                isPass: !showConfirmPassword,
+              ).passwordTextfield(
+                IconButton(
+                  icon: Icon(
+                    showConfirmPassword ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.black.withValues(alpha: 0.5),
                   ),
-                ],
+                  onPressed: () {
+                    setState(() {
+                      showConfirmPassword =!showConfirmPassword;
+                    });
+                  },
+                ),
               ),
+
+              SizedBox(height: 20,),
 
               //LoginButton
               ButtonsUtils(
                 onPressed: () {
                   Navigator.pushNamed(context, '/HomeScreen');
                 }, 
-                btnText: "Login",
+                btnText: "Register",
               ).LoginBtn(),
 
               //Split the login and social media login
@@ -118,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   const Text(
-                    "OR Login with",
+                    "Or register with",
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -158,14 +168,14 @@ class _LoginScreenState extends State<LoginScreen> {
               //Do you have an account button?? SignUp
               ButtonsUtils(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/RegisterScreen');
+                  Navigator.pushNamed(context, '/LoginScreen');
                 }, 
-                btnText: "Register",
+                btnText: "Login",
                 
               ).doYouHaveAnAccountBtn(
-                "Don't have an account?",
+                "Already have an account?",
               )
-              
+
             ],
           ),
         ),

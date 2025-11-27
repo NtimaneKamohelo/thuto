@@ -3,6 +3,8 @@ import 'package:thuto_frontend/config/constants/app_colors.dart';
 import 'package:thuto_frontend/features/auth/presentation/forgotPassword_screen.dart';
 import 'package:thuto_frontend/features/auth/presentation/home_screen.dart';
 import 'package:thuto_frontend/features/auth/presentation/loading_screen.dart';
+import 'package:thuto_frontend/features/auth/presentation/login_screen.dart';
+import 'package:thuto_frontend/features/auth/presentation/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Thuto',
+      
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.background,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.background,
+        )
       ),
       
       home: LoadingScreen(),
@@ -28,6 +34,8 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         ForgotPasswordScreen.id: (context) => ForgotPasswordScreen(),
+        RegisterScreen.id: (context) => RegisterScreen(),
+        LoginScreen.id: (context) => LoadingScreen(),
       },
     );
   }

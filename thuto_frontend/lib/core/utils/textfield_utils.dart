@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:thuto_frontend/config/constants/app_colors.dart';
 
-class TextfieldUtils {
+class TextfieldUtils{
   Widget prefixIcon;
   // Widget suffixIcon;
 
   final TextEditingController textEditingController;
-  final bool isPass;
+   bool isPass;
   final String hintText;
 
   //Controller
@@ -36,8 +36,18 @@ class TextfieldUtils {
         decoration: InputDecoration(
           fillColor: AppColors.textPrimary,
           contentPadding: const EdgeInsets.all(10),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10)
+          enabledBorder: OutlineInputBorder( //Border when not focused
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: AppColors.secondary.withValues(alpha: 0.5),
+            )
+          ),
+          //Border when textfield is focused
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: AppColors.secondary,
+            )
           ),
           prefixIcon: prefixIcon,
           hintText: hintText,
@@ -52,10 +62,8 @@ class TextfieldUtils {
   }
 
   //Password-Textfield
-    Container passwordTextfield() {
-      
-      return Container(
-        
+    Container passwordTextfield(Widget? suffixIcon) { 
+      return Container( 
         decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -72,12 +80,21 @@ class TextfieldUtils {
           decoration: InputDecoration(
             fillColor: AppColors.textPrimary,
             contentPadding: const EdgeInsets.all(10),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              
-            ),
+            enabledBorder: OutlineInputBorder( //Border when not focused
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: AppColors.secondary.withValues(alpha: 0.5),
+            )
+          ),
+          //Border when textfield is focused
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: AppColors.secondary,
+            )
+          ),
             prefixIcon: prefixIcon,
-            suffixIcon: const Icon(Icons.remove_red_eye),
+            suffixIcon: suffixIcon,
             hintText: hintText,
             hintStyle: const TextStyle(
               color: AppColors.textPrimary,

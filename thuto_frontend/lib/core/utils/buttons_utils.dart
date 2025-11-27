@@ -49,11 +49,54 @@ class ButtonsUtils {
   }
 
   //Social Media Login
-  Container mediaButton(Widget icon) {
+  Widget mediaButton(Widget icon) {
     return Container(
-      child: IconButton(
+      margin: const EdgeInsets.all(25),
+      width: 95,
+      height: 95,
+      child: IconButton(  
         onPressed: onPressed, 
-        icon: icon)
+        icon: icon,
+        iconSize: 40,
+        style: IconButton.styleFrom(
+          backgroundColor: AppColors.secondary.withValues(alpha: 0.2),
+          shape: RoundedRectangleBorder(
+            
+            borderRadius: BorderRadius.circular(10)
+          )
+        ),
+          
+           
+      ),
+    );
+  }
+
+  //Don't have an account button?? SignUp
+  Widget doYouHaveAnAccountBtn(String text) {
+    return Container(
+      margin: EdgeInsets.only(top: 5),
+      
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(text,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 15,
+            fontWeight: FontWeight.bold
+          ),
+          ),
+
+          TextButton(
+            onPressed: onPressed, 
+            child: Text(
+              btnText,
+              style: TextStyle(
+                color: AppColors.textPrimary,
+              ),
+            ) ),
+        ],
+      ),
     );
   }
 
