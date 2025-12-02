@@ -30,9 +30,16 @@ class TextfieldUtils{
         ]
       ),
       margin: const EdgeInsets.only(top:40, left: 20, right: 20),
-      child: TextField(
+      child: TextFormField(
         obscureText: isPass,
         controller: textEditingController,
+        //Validator
+        validator: (value) {
+          if(value == null || value.trim().isEmpty) {
+            return "This field cannot be empty";
+          }
+          return null;
+        },
         decoration: InputDecoration(
           fillColor: AppColors.textPrimary,
           contentPadding: const EdgeInsets.all(10),
@@ -56,6 +63,7 @@ class TextfieldUtils{
             fontSize: 14,
           )
         ),
+
       ),
     );
 
@@ -73,10 +81,19 @@ class TextfieldUtils{
           ]
         ),
         margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
-        child: TextField(
+        child: TextFormField(
           
           obscureText: isPass,
           controller: textEditingController,
+
+          //Validator
+          validator: (value) {
+            if(value == null || value.trim().isEmpty) {
+              return "This field cannot be empty";
+            }
+            return null;
+          },
+
           decoration: InputDecoration(
             fillColor: AppColors.textPrimary,
             contentPadding: const EdgeInsets.all(10),

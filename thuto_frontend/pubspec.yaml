@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.6.0
   
   #Icons
   font_awesome_flutter: ^10.8.0
