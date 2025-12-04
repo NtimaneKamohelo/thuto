@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 import 'package:thuto_frontend/config/constants/app_strings.dart';
+import 'package:thuto_frontend/core/models/user_model.dart';
 import 'package:thuto_frontend/core/utils/buttons_utils.dart';
 import 'package:thuto_frontend/core/utils/textfield_utils.dart';
 
@@ -11,6 +15,36 @@ class RegisterScreen extends StatefulWidget {
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+Future<UserModel> registerScreen(
+  String email, 
+  String password,
+  BuildContext context,
+) async {
+  var Url = "http://localhost:8080/api/auth/signup";
+  var response = await http.post(Url as Uri,
+    headers: <String, String>{"Content-Type":"application/json"},
+    body: jsonEncode(<String, String>{
+      "email" : email,
+      "password" : password,
+    })
+  );
+  String responseString = response.body;
+  if(response.statusCode == 200) {
+    showDialog(
+      context: context, 
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext){
+        return MyAlertDialog(title: 'Backend response', content: response.body);
+      },
+    ); 
+  }
+
+  //If backend returns error, throw exception
+  throw Exception("Failed to register user: ${response.body}");
+
+
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
