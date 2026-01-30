@@ -1,5 +1,5 @@
 # THUTO 
-### ~ INPROGRESS {Start Date: 26/09/2025 -> End Date: 28/02/2026}
+### ~ INPROGRESS 
 
 ## Project Documentation
 
